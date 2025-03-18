@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO2 Level for a Day</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .high-co2 {
+            color: red;
+            font-weight: bold;
+        }
+
+        .low-co2 {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Skatīt CO2 līmeni konkrētā dienā</h1>
+    <form method="POST">
+        <label for="day">Ievadiet dienas numuru:</label><br>
+        <input type="number" id="day" name="day" required><br><br>
+        <button class="button" type="submit">Apskatīt CO2 līmeni</button>
+    </form>
+
+    {% if co2_level is not none %}
+    {% set co2_float = co2_level | float %}
+    <p class="{% if co2_float > 2000 %}high-co2{% else %}low-co2{% endif %}">
+        CO2 līmenis dienā {{ day }}: {{ co2_float }} ppm
+    </p>
+    {% elif error %}
+    <p class="error">{{ error }}</p>
+    {% else %}
+    <p>Lūdzu, ievadiet dienas numuru.</p>
+    {% endif %}
+
+
+
+
+    <br><a href="/"><button class="button">Atgriezties sākumlapā</button></a>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO2 Levels Chart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        img {
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Visi CO2 līmeņi diagrammā</h1>
+    <img src="data:image/png;base64,{{ plot_url }}" alt="CO2 Levels Chart">
+    <br><a href="/"><button class="button">Atgriezties sākumlapā</button></a>
+</body>
+
+</html>
